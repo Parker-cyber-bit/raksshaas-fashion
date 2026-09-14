@@ -5,367 +5,1646 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin - Raksshaas Fashion</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪡</text></svg>">
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap');
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Inter',sans-serif;background:#FFFBF7;color:#2E2A26;min-height:100vh}
-  h1,h2{font-family:'Cormorant Garamond',serif}
-  .container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FFFBF7;
+    color: #2E2A26;
+    min-height: 100vh;
+  }
+
+  h1, h2 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
   /* LOGIN */
-  .login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
-  .login-card{background:#fff;border:1px solid #EDE6DD;border-radius:24px;padding:36px 32px;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(0,0,0,0.06)}
-  .login-card .logo{width:52px;height:52px;background:#2E2A26;color:#FFFBF7;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond';font-weight:700;font-size:22px;margin:0 auto 16px}
-  .login-card h1{text-align:center;font-size:28px;margin-bottom:6px}
-  .login-card p{text-align:center;color:#8A7F78;font-size:13px;margin-bottom:24px}
-  .field{margin-bottom:16px}
-  .field label{display:block;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;margin-bottom:6px}
-  .field input, .field textarea, .field select{width:100%;padding:12px 14px;border:1px solid #EDE6DD;border-radius:12px;font-size:14px;font-family:Inter;outline:none;transition:0.2s;background:#FFFBF7}
-  .field input:focus, .field textarea:focus, .field select:focus{border-color:#B88A5A;background:#fff}
-  .field textarea{resize:vertical;min-height:80px}
-  .btn{width:100%;background:#2E2A26;color:#FFFBF7;border:none;padding:13px;border-radius:999px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:0.3s}
-  .btn:hover{background:#B88A5A;transform:translateY(-1px)}
-  .btn:disabled{opacity:0.5;cursor:not-allowed}
-  .btn-secondary{background:transparent;color:#2E2A26;border:1px solid #D9CFC2}
-  .btn-secondary:hover{background:#fff;border-color:#2E2A26}
-  .error{background:#FFF0F0;border:1px solid #FFD0D0;color:#8A2A2A;padding:10px 14px;border-radius:12px;font-size:13px;margin-bottom:16px;display:none}
-  .success{background:#F0FFF4;border:1px solid #C6F6D5;color:#22543D;padding:10px 14px;border-radius:12px;font-size:13px;margin-bottom:16px;display:none}
+
+  .login-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .login-card {
+    background: #fff;
+    border: 1px solid #EDE6DD;
+    border-radius: 24px;
+    padding: 36px 32px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+  }
+
+  .login-card .logo {
+    width: 52px;
+    height: 52px;
+    background: #2E2A26;
+    color: #FFFBF7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond';
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0 auto 16px;
+  }
+
+  .login-card h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  .login-card p {
+    text-align: center;
+    color: #8A7F78;
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .field input,
+  .field textarea,
+  .field select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #EDE6DD;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: Inter;
+    outline: none;
+    transition: 0.2s;
+    background: #FFFBF7;
+  }
+
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    border-color: #B88A5A;
+    background: #fff;
+  }
+
+  .field textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .btn {
+    width: 100%;
+    background: #2E2A26;
+    color: #FFFBF7;
+    border: none;
+    padding: 13px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: #B88A5A;
+    transform: translateY(-1px);
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #2E2A26;
+    border: 1px solid #D9CFC2;
+  }
+
+  .btn-secondary:hover {
+    background: #fff;
+    border-color: #2E2A26;
+  }
+
+  .error {
+    background: #FFF0F0;
+    border: 1px solid #FFD0D0;
+    color: #8A2A2A;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    margin-bottom: 16px;
+    display: none;
+  }
+
+  .success {
+    background: #F0FFF4;
+    border: 1px solid #C6F6D5;
+    color: #22543D;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    margin-bottom: 16px;
+    display: none;
+  }
+
   /* DASHBOARD */
-  .dashboard{display:none;min-height:100vh}
-  .topbar{background:rgba(255,251,247,0.9);backdrop-filter:blur(12px);border-bottom:1px solid #EDE6DD;position:sticky;top:0;z-index:10}
-  .topbar-inner{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
-  .admin-badge{display:flex;align-items:center;gap:10px}
-  .admin-avatar{width:36px;height:36px;background:#2E2A26;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600}
-  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
-  .stat{background:#fff;border:1px solid #EDE6DD;border-radius:16px;padding:18px}
-  .stat b{font-family:'Cormorant Garamond';font-size:28px;display:block}
-  .stat span{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#8A8A8A}
-  .grid{display:grid;grid-template-columns:360px 1fr;gap:24px;align-items:start;padding-bottom:40px}
-  .panel{background:#fff;border:1px solid #EDE6DD;border-radius:20px;padding:22px}
-  .panel h2{font-size:22px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-  .upload-area{border:2px dashed #D9CFC2;border-radius:16px;padding:20px;text-align:center;cursor:pointer;transition:0.3s;background:#FFFBF7;margin-bottom:16px}
-  .upload-area:hover{border-color:#B88A5A;background:#fff}
-  .upload-area.dragover{border-color:#B88A5A;background:#F8EDE1}
-  .upload-area img{width:100%;max-height:200px;object-fit:cover;border-radius:12px;margin-top:12px;display:none}
-  .products-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .p-card{background:#fff;border:1px solid #EDE6DD;border-radius:16px;overflow:hidden;transition:0.3s}
-  .p-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,0.06)}
-  .p-card img{width:100%;height:180px;object-fit:cover;background:#F3ECE4}
-  .p-info{padding:12px 14px}
-  .p-info h3{font-size:16px;margin-bottom:2px}
-  .p-info p{font-size:12px;color:#8A7F78;margin-bottom:8px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  .p-actions{display:flex;gap:8px}
-  .p-actions button{flex:1;padding:8px;border-radius:999px;border:1px solid #EDE6DD;background:#fff;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer}
-  .p-actions button.delete{color:#8A2A2A;border-color:#FFD0D0;background:#FFF8F8}
-  .p-actions button.delete:hover{background:#FFEEEE}
-  @media(max-width:900px){.grid{grid-template-columns:1fr}.products-list{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr 1fr}}
-  @media(max-width:600px){.products-list{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+
+  .dashboard {
+    display: none;
+    min-height: 100vh;
+  }
+
+  .topbar {
+    background: rgba(255,251,247,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #EDE6DD;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+  }
+
+  .admin-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .admin-avatar {
+    width: 36px;
+    height: 36px;
+    background: #2E2A26;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .stat {
+    background: #fff;
+    border: 1px solid #EDE6DD;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .stat b {
+    font-family: 'Cormorant Garamond';
+    font-size: 28px;
+    display: block;
+  }
+
+  .stat span {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8A8A8A;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 24px;
+    align-items: start;
+    padding-bottom: 40px;
+  }
+
+  .panel {
+    background: #fff;
+    border: 1px solid #EDE6DD;
+    border-radius: 20px;
+    padding: 22px;
+  }
+
+  .panel h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .upload-area {
+    border: 2px dashed #D9CFC2;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #FFFBF7;
+    margin-bottom: 16px;
+  }
+
+  .upload-area:hover {
+    border-color: #B88A5A;
+    background: #fff;
+  }
+
+  .upload-area.dragover {
+    border-color: #B88A5A;
+    background: #F8EDE1;
+  }
+
+  .upload-area img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 12px;
+    display: none;
+  }
+
+  .products-list {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 16px;
+  }
+
+  .p-card {
+    background: #fff;
+    border: 1px solid #EDE6DD;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: 0.3s;
+  }
+
+  .p-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  }
+
+  .p-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: #F3ECE4;
+  }
+
+  .p-info {
+    padding: 12px 14px;
+  }
+
+  .p-info h3 {
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+
+  .p-info p {
+    font-size: 12px;
+    color: #8A7F78;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .p-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .p-actions button {
+    flex: 1;
+    padding: 8px;
+    border-radius: 999px;
+    border: 1px solid #EDE6DD;
+    background: #fff;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .p-actions button.delete {
+    color: #8A2A2A;
+    border-color: #FFD0D0;
+    background: #FFF8F8;
+  }
+
+  .p-actions button.delete:hover {
+    background: #FFEEEE;
+  }
+
+  @media(max-width:900px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .products-list {
+      grid-template-columns: 1fr;
+    }
+
+    .stats {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  @media(max-width:600px) {
+    .products-list {
+      grid-template-columns: 1fr;
+    }
+
+    .stats {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 </head>
+
 <body>
 
+<!-- ================= LOGIN ================= -->
+
 <div class="login-wrap" id="loginWrap">
+
   <div class="login-card">
+
     <div class="logo">R</div>
+
     <h1>Admin Login</h1>
-    <p>Raksshaas Fashion by Raksshana<br>Only shopkeeper can upload</p>
+
+    <p>
+      Raksshaas Fashion by Raksshana<br>
+      Only shopkeeper can upload
+    </p>
+
     <div class="error" id="loginError"></div>
-    <div class="field"><label>Username</label><input id="username" type="text" placeholder="raksshana" value="raksshana"></div>
-    <div class="field"><label>Password</label><input id="password" type="password" placeholder="••••••••" value="raksshaas123"></div>
-    <button class="btn" id="loginBtn" onclick="login()">Login to Dashboard →</button>
-    <p style="text-align:center;font-size:11px;color:#9A9A9A;margin-top:16px">Demo: raksshana / raksshaas123<br>Change in server.js for production</p>
-    <button onclick="window.location.href='/'" style="display:block;width:100%;text-align:center;margin-top:12px;font-size:12px;color:#8A7F78;background:transparent;border:1px solid #EDE6DD;padding:10px;border-radius:999px;cursor:pointer">← Back to Website (Customer View)</button>
-    <p style="text-align:center;font-size:10px;color:#B0A9A3;margin-top:10px">Customer site: <b>/</b> • Admin: <b>/admin</b></p>
+
+    <div class="field">
+      <label>Username</label>
+      <input
+        id="username"
+        type="text"
+        placeholder="raksshana"
+        value="raksshana"
+      >
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input
+        id="password"
+        type="password"
+        placeholder="••••••••"
+      >
+    </div>
+
+    <button
+      class="btn"
+      id="loginBtn"
+      onclick="login()"
+    >
+      Login to Dashboard →
+    </button>
+
+    <button
+      onclick="window.location.href='/'"
+      style="
+        display:block;
+        width:100%;
+        text-align:center;
+        margin-top:12px;
+        font-size:12px;
+        color:#8A7F78;
+        background:transparent;
+        border:1px solid #EDE6DD;
+        padding:10px;
+        border-radius:999px;
+        cursor:pointer
+      "
+    >
+      ← Back to Website (Customer View)
+    </button>
+
+    <p style="
+      text-align:center;
+      font-size:10px;
+      color:#B0A9A3;
+      margin-top:10px
+    ">
+      Customer site: <b>/</b> • Admin: <b>/admin</b>
+    </p>
+
   </div>
+
 </div>
+
+
+<!-- ================= DASHBOARD ================= -->
 
 <div class="dashboard" id="dashboard">
-  <div class="topbar"><div class="container topbar-inner">
-    <div class="admin-badge"><div class="admin-avatar">R</div><div><b style="display:block;font-size:14px">Raksshana</b><span style="font-size:11px;color:#8A8A8A">Admin • Raksshaas Fashion</span></div></div>
-    <div style="display:flex;gap:10px"><a href="/" target="_blank" class="btn btn-secondary" style="padding:8px 16px;width:auto;font-size:11px">View Website</a><button class="btn" style="padding:8px 16px;width:auto;font-size:11px;background:#8A2A2A" onclick="logout()">Logout</button></div>
-  </div></div>
+
+  <div class="topbar">
+
+    <div class="container topbar-inner">
+
+      <div class="admin-badge">
+
+        <div class="admin-avatar">R</div>
+
+        <div>
+          <b style="display:block;font-size:14px">
+            Raksshana
+          </b>
+
+          <span style="font-size:11px;color:#8A8A8A">
+            Admin • Raksshaas Fashion
+          </span>
+        </div>
+
+      </div>
+
+      <div style="display:flex;gap:10px">
+
+        <a
+          href="/"
+          target="_blank"
+          class="btn btn-secondary"
+          style="
+            padding:8px 16px;
+            width:auto;
+            font-size:11px
+          "
+        >
+          View Website
+        </a>
+
+        <button
+          class="btn"
+          style="
+            padding:8px 16px;
+            width:auto;
+            font-size:11px;
+            background:#8A2A2A
+          "
+          onclick="logout()"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
 
   <div class="container">
+
+    <!-- STATS -->
+
     <div class="stats">
-      <div class="stat"><b id="totalProducts">0</b><span>Total Designs</span></div>
-      <div class="stat"><b>Salem & CBE</b><span>Locations</span></div>
-      <div class="stat"><b id="todayCount">0</b><span>Added Today</span></div>
+
+      <div class="stat">
+        <b id="totalProducts">0</b>
+        <span>Total Designs</span>
+      </div>
+
+      <div class="stat">
+        <b>Salem & CBE</b>
+        <span>Locations</span>
+      </div>
+
+      <div class="stat">
+        <b id="todayCount">0</b>
+        <span>Added Today</span>
+      </div>
+
     </div>
+
 
     <div class="grid">
+
+      <!-- ================= ADD PRODUCT ================= -->
+
       <div class="panel">
+
         <h2>➕ Add New Design</h2>
-        <div class="success" id="uploadSuccess"></div>
-        <div class="error" id="uploadError"></div>
-        
-        <div class="upload-area" id="uploadArea" onclick="document.getElementById('imageInput').click()">
-          <div style="font-size:28px">📸</div>
-          <div style="font-size:13px;font-weight:600;margin-top:6px">Click to upload photo</div>
-          <div style="font-size:11px;color:#8A8A8A;margin-top:2px">Aari work, blouse, kids gown (max 8MB)</div>
-          <img id="previewImg" src="">
-          <input type="file" id="imageInput" accept="image/*" style="display:none" onchange="previewFile()">
+
+        <div
+          class="success"
+          id="uploadSuccess"
+        ></div>
+
+        <div
+          class="error"
+          id="uploadError"
+        ></div>
+
+
+        <!-- IMAGE UPLOAD -->
+
+        <div
+          class="upload-area"
+          id="uploadArea"
+          onclick="document.getElementById('imageInput').click()"
+        >
+
+          <div style="font-size:28px">
+            📸
+          </div>
+
+          <div style="
+            font-size:13px;
+            font-weight:600;
+            margin-top:6px
+          ">
+            Click to upload photo
+          </div>
+
+          <div style="
+            font-size:11px;
+            color:#8A8A8A;
+            margin-top:2px
+          ">
+            Aari work, blouse, kids gown (max 8MB)
+          </div>
+
+          <img
+            id="previewImg"
+            src=""
+          >
+
+          <input
+            type="file"
+            id="imageInput"
+            accept="image/*"
+            style="display:none"
+            onchange="previewFile()"
+          >
+
         </div>
 
-        <div class="field"><label>Title * (e.g., Bridal Aari Blouse)</label><input id="title" type="text" placeholder="Bridal Aari Blouse - Gold Zari"></div>
-        <div class="field"><label>Price (e.g., ₹3,500 or DM for Price)</label><input id="price" type="text" placeholder="DM for Price"></div>
-        <div class="field"><label>Category</label>
-          <select id="category">
-            <option value="Aari Bridal">Aari Bridal</option>
-            <option value="Kids Special">Kids Special</option>
-            <option value="Custom">Custom Stitching</option>
-            <option value="Designer Blouse">Designer Blouse</option>
-            <option value="Embroidery">Embroidery</option>
-            <option value="Saree">Saree</option>
-          </select>
+
+        <!-- TITLE -->
+
+        <div class="field">
+
+          <label>
+            Title * (e.g., Bridal Aari Blouse)
+          </label>
+
+          <input
+            id="title"
+            type="text"
+            placeholder="Bridal Aari Blouse - Gold Zari"
+          >
+
         </div>
-        <div class="field"><label>Tag (small badge)</label><input id="tag" type="text" placeholder="🔥 Bridal Aari"></div>
-        <div class="field"><label>Description / Caption</label><textarea id="description" placeholder="Gold zari + stone work — custom for muhurtham. Handmade with love in Salem."></textarea></div>
-        <button class="btn" id="uploadBtn" onclick="uploadProduct()">Upload to Website →</button>
-        <p style="font-size:11px;color:#9A9A9A;margin-top:10px;text-align:center">It will appear instantly on customer website</p>
+
+
+        <!-- PRICE -->
+
+        <div class="field">
+
+          <label>
+            Price (e.g., ₹3,500 or DM for Price)
+          </label>
+
+          <input
+            id="price"
+            type="text"
+            placeholder="DM for Price"
+          >
+
+        </div>
+
+
+        <!-- CATEGORY -->
+
+        <div class="field">
+
+          <label>
+            Category
+          </label>
+
+          <select id="category">
+
+            <option value="Aari Bridal">
+              Aari Bridal
+            </option>
+
+            <option value="Kids Special">
+              Kids Special
+            </option>
+
+            <option value="Custom">
+              Custom Stitching
+            </option>
+
+            <option value="Designer Blouse">
+              Designer Blouse
+            </option>
+
+            <option value="Embroidery">
+              Embroidery
+            </option>
+
+            <option value="Saree">
+              Saree
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- TAG -->
+
+        <div class="field">
+
+          <label>
+            Tag (small badge)
+          </label>
+
+          <input
+            id="tag"
+            type="text"
+            placeholder="🔥 Bridal Aari"
+          >
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="field">
+
+          <label>
+            Description / Caption
+          </label>
+
+          <textarea
+            id="description"
+            placeholder="Gold zari + stone work — custom for muhurtham. Handmade with love in Salem."
+          ></textarea>
+
+        </div>
+
+
+        <!-- UPLOAD BUTTON -->
+
+        <button
+          class="btn"
+          id="uploadBtn"
+          onclick="uploadProduct()"
+        >
+          Upload to Website →
+        </button>
+
+        <p style="
+          font-size:11px;
+          color:#9A9A9A;
+          margin-top:10px;
+          text-align:center
+        ">
+          It will appear instantly on customer website
+        </p>
+
       </div>
+
+
+      <!-- ================= PRODUCTS ================= -->
 
       <div class="panel">
-        <h2>📦 Your Designs <span id="countBadge" style="background:#2E2A26;color:#fff;font-size:11px;padding:4px 10px;border-radius:999px;font-family:Inter">0</span></h2>
-        <div class="products-list" id="productsList"><p style="color:#8A8A8A;font-size:13px">Loading...</p></div>
+
+        <h2>
+
+          📦 Your Designs
+
+          <span
+            id="countBadge"
+            style="
+              background:#2E2A26;
+              color:#fff;
+              font-size:11px;
+              padding:4px 10px;
+              border-radius:999px;
+              font-family:Inter
+            "
+          >
+            0
+          </span>
+
+        </h2>
+
+        <div
+          class="products-list"
+          id="productsList"
+        >
+          <p style="
+            color:#8A8A8A;
+            font-size:13px
+          ">
+            Loading...
+          </p>
+        </div>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
 
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script>
+
 let token = localStorage.getItem('admin_token');
+
 const API = '';
 
-function showError(id,msg){const el=document.getElementById(id); el.textContent=msg; el.style.display='block'; setTimeout(()=>el.style.display='none',4000);}
-function showSuccess(id,msg){const el=document.getElementById(id); el.textContent=msg; el.style.display='block'; setTimeout(()=>el.style.display='none',4000);}
 
-async function login(){
-  const username=document.getElementById('username').value.trim();
-  const password=document.getElementById('password').value;
-  const btn=document.getElementById('loginBtn');
-  const errEl=document.getElementById('loginError');
-  console.log('Login clicked', username);
-  if(!username || !password){
-    showError('loginError','Please enter username & password');
+/* ================= ERROR / SUCCESS ================= */
+
+function showError(id, msg) {
+
+  const el = document.getElementById(id);
+
+  el.textContent = msg;
+
+  el.style.display = 'block';
+
+  setTimeout(() => {
+    el.style.display = 'none';
+  }, 5000);
+
+}
+
+
+function showSuccess(id, msg) {
+
+  const el = document.getElementById(id);
+
+  el.textContent = msg;
+
+  el.style.display = 'block';
+
+  setTimeout(() => {
+    el.style.display = 'none';
+  }, 4000);
+
+}
+
+
+/* ================= LOGIN ================= */
+
+async function login() {
+
+  const username =
+    document.getElementById('username').value.trim();
+
+  const password =
+    document.getElementById('password').value;
+
+  const btn =
+    document.getElementById('loginBtn');
+
+
+  if (!username || !password) {
+
+    showError(
+      'loginError',
+      'Please enter username & password'
+    );
+
     return;
   }
-  btn.disabled=true; btn.textContent='Logging in...';
-  errEl.style.display='none';
-  try{
-    console.log('Fetching /api/login');
-    const res=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,password})});
-    console.log('Response status', res.status);
-    const data=await res.json().catch(()=>({error:'Server did not return JSON'}));
-    console.log('Data', data);
-    if(!res.ok) throw new Error(data.error||'Login failed - check username/password');
-    token=data.token;
-    localStorage.setItem('admin_token',token);
-    console.log('Token saved, init dashboard');
-    initDashboard();
-  }catch(e){
-    console.error('Login error', e);
-    showError('loginError','❌ '+e.message+' (Check if server is running on port 3000)');
-    // Fallback for demo if server offline - allow local demo
-    if(username==='raksshana' && password==='raksshaas123'){
-      showError('loginError','⚠️ Server not reachable, but credentials correct. Trying offline demo mode...');
-      setTimeout(()=>{
-        token='offline-demo-token-'+Date.now();
-        localStorage.setItem('admin_token',token);
-        validOffline=true;
-        initDashboard();
-      },800);
+
+
+  btn.disabled = true;
+
+  btn.textContent = 'Logging in...';
+
+
+  try {
+
+    const res = await fetch('/api/login', {
+
+      method: 'POST',
+
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify({
+        username,
+        password
+      })
+
+    });
+
+
+    const data =
+      await res.json().catch(() => ({
+        error: 'Server did not return JSON'
+      }));
+
+
+    if (!res.ok) {
+
+      throw new Error(
+        data.error || 'Login failed'
+      );
+
     }
+
+
+    token = data.token;
+
+    localStorage.setItem(
+      'admin_token',
+      token
+    );
+
+
+    await initDashboard();
+
+
+  } catch (e) {
+
+    console.error('Login error:', e);
+
+    showError(
+      'loginError',
+      '❌ ' + e.message
+    );
+
+  } finally {
+
+    btn.disabled = false;
+
+    btn.textContent =
+      'Login to Dashboard →';
+
   }
-  finally{btn.disabled=false; btn.textContent='Login to Dashboard →';}
+
 }
-let validOffline=false;
 
-function logout(){localStorage.removeItem('admin_token'); token=null; document.getElementById('loginWrap').style.display='flex'; document.getElementById('dashboard').style.display='none';}
 
-async function initDashboard(){
-  if(!token){return;}
-  try{
-    // If offline demo token, skip server check
-    if(token.startsWith('offline-demo-token')){
-      document.getElementById('loginWrap').style.display='none';
-      document.getElementById('dashboard').style.display='block';
-      loadProducts();
+/* ================= LOGOUT ================= */
+
+function logout() {
+
+  localStorage.removeItem('admin_token');
+
+  token = null;
+
+  document.getElementById(
+    'loginWrap'
+  ).style.display = 'flex';
+
+  document.getElementById(
+    'dashboard'
+  ).style.display = 'none';
+
+}
+
+
+/* ================= AUTH CHECK ================= */
+
+async function initDashboard() {
+
+  if (!token) {
+
+    document.getElementById(
+      'loginWrap'
+    ).style.display = 'flex';
+
+    document.getElementById(
+      'dashboard'
+    ).style.display = 'none';
+
+    return;
+  }
+
+
+  try {
+
+    const res = await fetch(
+      '/api/auth-check',
+      {
+        headers: {
+          'Authorization':
+            'Bearer ' + token
+        }
+      }
+    );
+
+
+    if (!res.ok) {
+
+      throw new Error(
+        'Session expired. Please log in again.'
+      );
+
+    }
+
+
+    document.getElementById(
+      'loginWrap'
+    ).style.display = 'none';
+
+    document.getElementById(
+      'dashboard'
+    ).style.display = 'block';
+
+
+    await loadProducts();
+
+
+  } catch (e) {
+
+    console.error(
+      'Auth check failed:',
+      e
+    );
+
+
+    localStorage.removeItem(
+      'admin_token'
+    );
+
+    token = null;
+
+
+    document.getElementById(
+      'loginWrap'
+    ).style.display = 'flex';
+
+    document.getElementById(
+      'dashboard'
+    ).style.display = 'none';
+
+
+    showError(
+      'loginError',
+      '❌ ' + e.message
+    );
+
+  }
+
+}
+
+
+/* ================= IMAGE PREVIEW ================= */
+
+function previewFile() {
+
+  const file =
+    document.getElementById(
+      'imageInput'
+    ).files[0];
+
+
+  if (!file) return;
+
+
+  if (file.size > 8 * 1024 * 1024) {
+
+    showError(
+      'uploadError',
+      '❌ Image must be smaller than 8MB'
+    );
+
+    document.getElementById(
+      'imageInput'
+    ).value = '';
+
+    return;
+  }
+
+
+  const reader =
+    new FileReader();
+
+
+  reader.onload = e => {
+
+    const img =
+      document.getElementById(
+        'previewImg'
+      );
+
+    img.src = e.target.result;
+
+    img.style.display = 'block';
+
+  };
+
+
+  reader.readAsDataURL(file);
+
+}
+
+
+/* ================= UPLOAD PRODUCT ================= */
+
+async function uploadProduct() {
+
+  const title =
+    document.getElementById(
+      'title'
+    ).value.trim();
+
+
+  if (!title) {
+
+    showError(
+      'uploadError',
+      'Title is required'
+    );
+
+    return;
+  }
+
+
+  const fileInput =
+    document.getElementById(
+      'imageInput'
+    );
+
+
+  if (!fileInput.files[0]) {
+
+    showError(
+      'uploadError',
+      'Please select an image'
+    );
+
+    return;
+  }
+
+
+  if (!token) {
+
+    showError(
+      'uploadError',
+      'Please log in again'
+    );
+
+    return;
+  }
+
+
+  const btn =
+    document.getElementById(
+      'uploadBtn'
+    );
+
+
+  btn.disabled = true;
+
+  btn.textContent =
+    'Uploading...';
+
+
+  const form =
+    new FormData();
+
+
+  form.append(
+    'title',
+    title
+  );
+
+
+  form.append(
+    'price',
+    document.getElementById(
+      'price'
+    ).value
+  );
+
+
+  form.append(
+    'category',
+    document.getElementById(
+      'category'
+    ).value
+  );
+
+
+  form.append(
+    'tag',
+    document.getElementById(
+      'tag'
+    ).value
+  );
+
+
+  form.append(
+    'description',
+    document.getElementById(
+      'description'
+    ).value
+  );
+
+
+  form.append(
+    'image',
+    fileInput.files[0]
+  );
+
+
+  try {
+
+    const res =
+      await fetch(
+        '/api/products',
+        {
+          method: 'POST',
+
+          headers: {
+            'Authorization':
+              'Bearer ' + token
+          },
+
+          body: form
+        }
+      );
+
+
+    const data =
+      await res.json().catch(() => ({
+        error:
+          'Server did not return JSON'
+      }));
+
+
+    if (!res.ok) {
+
+      if (res.status === 401) {
+
+        logout();
+
+        throw new Error(
+          'Session expired. Please log in again.'
+        );
+
+      }
+
+
+      throw new Error(
+        data.error ||
+        'Upload failed'
+      );
+
+    }
+
+
+    showSuccess(
+      'uploadSuccess',
+      '✅ Added! It is now live on website.'
+    );
+
+
+    /* Clear form */
+
+    document.getElementById(
+      'title'
+    ).value = '';
+
+
+    document.getElementById(
+      'price'
+    ).value = '';
+
+
+    document.getElementById(
+      'description'
+    ).value = '';
+
+
+    document.getElementById(
+      'tag'
+    ).value = '';
+
+
+    fileInput.value = '';
+
+
+    const preview =
+      document.getElementById(
+        'previewImg'
+      );
+
+
+    preview.src = '';
+
+    preview.style.display =
+      'none';
+
+
+    await loadProducts();
+
+
+  } catch (e) {
+
+    console.error(
+      'Upload error:',
+      e
+    );
+
+
+    showError(
+      'uploadError',
+      '❌ ' + e.message
+    );
+
+
+  } finally {
+
+    btn.disabled = false;
+
+    btn.textContent =
+      'Upload to Website →';
+
+  }
+
+}
+
+
+/* ================= LOAD PRODUCTS ================= */
+
+async function loadProducts() {
+
+  try {
+
+    const res =
+      await fetch(
+        '/api/products'
+      );
+
+
+    if (!res.ok) {
+
+      throw new Error(
+        'Could not load products'
+      );
+
+    }
+
+
+    const products =
+      await res.json();
+
+
+    document.getElementById(
+      'totalProducts'
+    ).textContent =
+      products.length;
+
+
+    document.getElementById(
+      'countBadge'
+    ).textContent =
+      products.length;
+
+
+    const today =
+      new Date()
+        .toISOString()
+        .split('T')[0];
+
+
+    document.getElementById(
+      'todayCount'
+    ).textContent =
+      products.filter(
+        p => p.createdAt === today
+      ).length;
+
+
+    const list =
+      document.getElementById(
+        'productsList'
+      );
+
+
+    if (products.length === 0) {
+
+      list.innerHTML = `
+        <p style="
+          color:#8A8A8A;
+          font-size:13px
+        ">
+          No designs yet.
+          Upload your first Aari work!
+        </p>
+      `;
+
       return;
     }
-    const res=await fetch('/api/auth-check',{headers:{'Authorization':'Bearer '+token}});
-    if(!res.ok) throw new Error('Session expired');
-    document.getElementById('loginWrap').style.display='none';
-    document.getElementById('dashboard').style.display='block';
-    loadProducts();
-  }catch(e){
-    console.error('Auth check failed', e);
-    // Don't auto-logout on network error, show message
-    if(e.message.includes('Failed to fetch') || e.message.includes('NetworkError')){
-      showError('loginError','Server unreachable. Using offline demo.');
-      document.getElementById('loginWrap').style.display='none';
-      document.getElementById('dashboard').style.display='block';
-      loadProducts();
-    } else {
-      logout();
-    }
-  }
-}
 
-function previewFile(){
-  const file=document.getElementById('imageInput').files[0];
-  if(!file) return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    const img=document.getElementById('previewImg');
-    img.src=e.target.result; img.style.display='block';
-  };
-  reader.readAsDataURL(file);
-}
 
-async function uploadProduct(){
-  const title=document.getElementById('title').value.trim();
-  if(!title){showError('uploadError','Title is required'); return;}
-  const btn=document.getElementById('uploadBtn'); btn.disabled=true; btn.textContent='Uploading...';
-  
-  // Offline mode handling
-  if(token && token.startsWith('offline-demo-token')){
-    try{
-      const fileInput=document.getElementById('imageInput');
-      let imageData='images/product-1.jpg';
-      if(fileInput.files[0]){
-        imageData=await new Promise((resolve)=>{
-          const reader=new FileReader();
-          reader.onload=e=>resolve(e.target.result);
-          reader.readAsDataURL(fileInput.files[0]);
-        });
-      }
-      const products=getOfflineProducts();
-      const newProduct={
-        id:Date.now().toString(),
-        title,
-        price:document.getElementById('price').value||'DM for Price',
-        category:document.getElementById('category').value,
-        tag:document.getElementById('tag').value||'✨ New',
-        description:document.getElementById('description').value,
-        image:imageData,
-        createdAt:new Date().toISOString().split('T')[0]
-      };
-      products.push(newProduct);
-      saveOfflineProducts(products);
-      // Also save to localStorage for customer site
-      const customerProducts=JSON.parse(localStorage.getItem('customer_products')||'[]');
-      customerProducts.push(newProduct);
-      localStorage.setItem('customer_products', JSON.stringify(customerProducts));
-      
-      showSuccess('uploadSuccess','✅ Added in offline demo! (Will sync when server online)');
-      document.getElementById('title').value=''; document.getElementById('price').value=''; document.getElementById('description').value=''; document.getElementById('tag').value='';
-      fileInput.value=''; document.getElementById('previewImg').style.display='none';
-      loadProducts();
-    }catch(e){showError('uploadError',e.message);}
-    finally{btn.disabled=false; btn.textContent='Upload to Website →';}
-    return;
-  }
+    list.innerHTML =
+      products.map(p => `
 
-  const form=new FormData();
-  form.append('title',title);
-  form.append('price',document.getElementById('price').value);
-  form.append('category',document.getElementById('category').value);
-  form.append('tag',document.getElementById('tag').value);
-  form.append('description',document.getElementById('description').value);
-  const fileInput=document.getElementById('imageInput');
-  if(fileInput.files[0]) form.append('image',fileInput.files[0]);
+        <div class="p-card">
 
-  try{
-    const res=await fetch('/api/products',{method:'POST',headers:{'Authorization':'Bearer '+token},body:form});
-    const data=await res.json();
-    if(!res.ok) throw new Error(data.error||'Upload failed');
-    showSuccess('uploadSuccess','✅ Added! It is now live on website.');
-    document.getElementById('title').value=''; document.getElementById('price').value=''; document.getElementById('description').value=''; document.getElementById('tag').value='';
-    fileInput.value=''; document.getElementById('previewImg').style.display='none';
-    loadProducts();
-  }catch(e){showError('uploadError',e.message);}
-  finally{btn.disabled=false; btn.textContent='Upload to Website →';}
-}
+          <img
+            src="${escapeHtml(p.image)}"
+            onerror="this.style.opacity='0.4'"
+            alt="${escapeHtml(p.title)}"
+          >
 
-function getOfflineProducts(){
-  try{ return JSON.parse(localStorage.getItem('offline_products')||'[]'); } catch{ return []; }
-}
-function saveOfflineProducts(p){ localStorage.setItem('offline_products', JSON.stringify(p)); }
+          <div class="p-info">
 
-async function loadProducts(){
-  let products=[];
-  try{
-    if(token && token.startsWith('offline-demo-token')){
-      throw new Error('offline mode');
-    }
-    const res=await fetch('/api/products');
-    products=await res.json();
-  }catch(e){
-    console.log('Using offline products', e.message);
-    products=getOfflineProducts();
-    if(products.length===0){
-      // default demo products
-      products=[
-        {id:'1', title:'Bridal Aari Blouse', price:'Custom Price', description:'Gold zari + stone work — custom for muhurtham.', category:'Aari Bridal', tag:'🔥 Bridal Aari', image:'images/aari-blouse-1.jpg', createdAt:new Date().toISOString().split('T')[0]},
-        {id:'2', title:'Fairytale Birthday Gown', price:'From ₹2,500', description:'Delicate embroidery, dreamy layers.', category:'Kids Special', tag:'✨ Kids Special', image:'images/kids-gown.jpg', createdAt:new Date().toISOString().split('T')[0]},
-        {id:'3', title:'Designer Blouse Stitching', price:'From ₹850', description:'From threads to tradition.', category:'Custom', tag:'🪡 Custom', image:'images/product-3.jpg', createdAt:new Date().toISOString().split('T')[0]}
-      ];
-    }
-  }
-  try{
-    document.getElementById('totalProducts').textContent=products.length;
-    document.getElementById('countBadge').textContent=products.length;
-    const today=new Date().toISOString().split('T')[0];
-    document.getElementById('todayCount').textContent=products.filter(p=>p.createdAt===today).length;
-    const list=document.getElementById('productsList');
-    if(products.length===0){list.innerHTML='<p style="color:#8A8A8A;font-size:13px">No designs yet. Upload your first Aari work!</p>'; return;}
-    list.innerHTML=products.map(p=>`
-      <div class="p-card">
-        <img src="${p.image}" onerror="this.src='images/product-1.jpg'">
-        <div class="p-info">
-          <h3>${p.title}</h3>
-          <p style="color:#B88A5A;font-weight:600;font-size:12px">${p.price}</p>
-          <p>${p.description||''}</p>
-          <div class="p-actions">
-            <button onclick="deleteProduct('${p.id}')" class="delete">🗑 Delete</button>
-            <button onclick="window.open('/','_blank')">👁 View</button>
+            <h3>
+              ${escapeHtml(p.title)}
+            </h3>
+
+            <p style="
+              color:#B88A5A;
+              font-weight:600;
+              font-size:12px
+            ">
+              ${escapeHtml(p.price)}
+            </p>
+
+            <p>
+              ${escapeHtml(
+                p.description || ''
+              )}
+            </p>
+
+            <div class="p-actions">
+
+              <button
+                onclick="deleteProduct('${escapeHtml(String(p.id))}')"
+                class="delete"
+              >
+                🗑 Delete
+              </button>
+
+              <button
+                onclick="window.open('/','_blank')"
+              >
+                👁 View
+              </button>
+
+            </div>
+
           </div>
+
         </div>
-      </div>
-    `).join('');
-  }catch(e){console.error(e);}
+
+      `).join('');
+
+
+  } catch (e) {
+
+    console.error(
+      'Load products error:',
+      e
+    );
+
+
+    document.getElementById(
+      'productsList'
+    ).innerHTML = `
+      <p style="
+        color:#8A2A2A;
+        font-size:13px
+      ">
+        Could not load products.
+        Check the server.
+      </p>
+    `;
+
+  }
+
 }
 
-async function deleteProduct(id){
-  if(!confirm('Delete this design? It will be removed from website.')) return;
-  if(token && token.startsWith('offline-demo-token')){
-    let products=getOfflineProducts();
-    products=products.filter(p=>p.id!==id);
-    saveOfflineProducts(products);
-    let customerProducts=JSON.parse(localStorage.getItem('customer_products')||'[]');
-    customerProducts=customerProducts.filter(p=>p.id!==id);
-    localStorage.setItem('customer_products', JSON.stringify(customerProducts));
-    loadProducts();
+
+/* ================= DELETE PRODUCT ================= */
+
+async function deleteProduct(id) {
+
+  if (
+    !confirm(
+      'Delete this design? It will be removed from website.'
+    )
+  ) {
     return;
   }
-  try{
-    const res=await fetch(`/api/products/${id}`,{method:'DELETE',headers:{'Authorization':'Bearer '+token}});
-    if(!res.ok) throw new Error('Delete failed');
-    loadProducts();
-  }catch(e){alert(e.message);}
+
+
+  try {
+
+    const res =
+      await fetch(
+        `/api/products/${encodeURIComponent(id)}`,
+        {
+          method: 'DELETE',
+
+          headers: {
+            'Authorization':
+              'Bearer ' + token
+          }
+        }
+      );
+
+
+    const data =
+      await res.json().catch(() => ({}));
+
+
+    if (res.status === 401) {
+
+      logout();
+
+      throw new Error(
+        'Session expired. Please log in again.'
+      );
+
+    }
+
+
+    if (!res.ok) {
+
+      throw new Error(
+        data.error ||
+        'Delete failed'
+      );
+
+    }
+
+
+    await loadProducts();
+
+
+  } catch (e) {
+
+    console.error(
+      'Delete error:',
+      e
+    );
+
+    alert(e.message);
+
+  }
+
 }
 
-// Drag & drop
-const area=document.getElementById('uploadArea');
-area.addEventListener('dragover',e=>{e.preventDefault(); area.classList.add('dragover');});
-area.addEventListener('dragleave',()=>area.classList.remove('dragover'));
-area.addEventListener('drop',e=>{
-  e.preventDefault(); area.classList.remove('dragover');
-  const files=e.dataTransfer.files;
-  if(files.length){document.getElementById('imageInput').files=files; previewFile();}
-});
 
-// Auto login if token exists
-if(token) initDashboard();
+/* ================= HTML ESCAPING ================= */
+
+function escapeHtml(value) {
+
+  return String(value)
+
+    .replace(
+      /&/g,
+      '&amp;'
+    )
+
+    .replace(
+      /</g,
+      '&lt;'
+    )
+
+    .replace(
+      />/g,
+      '&gt;'
+    )
+
+    .replace(
+      /"/g,
+      '&quot;'
+    )
+
+    .replace(
+      /'/g,
+      '&#039;'
+    );
+
+}
+
+
+/* ================= DRAG & DROP ================= */
+
+const area =
+  document.getElementById(
+    'uploadArea'
+  );
+
+
+area.addEventListener(
+  'dragover',
+  e => {
+
+    e.preventDefault();
+
+    area.classList.add(
+      'dragover'
+    );
+
+  }
+);
+
+
+area.addEventListener(
+  'dragleave',
+  () => {
+
+    area.classList.remove(
+      'dragover'
+    );
+
+  }
+);
+
+
+area.addEventListener(
+  'drop',
+  e => {
+
+    e.preventDefault();
+
+    area.classList.remove(
+      'dragover'
+    );
+
+
+    const files =
+      e.dataTransfer.files;
+
+
+    if (files.length) {
+
+      document.getElementById(
+        'imageInput'
+      ).files = files;
+
+
+      previewFile();
+
+    }
+
+  }
+);
+
+
+/* ================= START ================= */
+
+if (token) {
+
+  initDashboard();
+
+}
+
 </script>
+
 </body>
 </html>
