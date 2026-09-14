@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raksshaas Fashion by Raksshana | Aari Work & Custom Stitching</title>
+<meta name="description" content="Designs made with love 💖 From threads to tradition ✨ Aari | Embroidery | Custom Stitching in Salem & Coimbatore. DM to create your perfect outfit.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪡</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:#FFFBF7;color:#2E2A26;line-height:1.65;overflow-x:hidden}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .container{max-width:1240px;margin:0 auto;padding:0 24px}
+  /* PROGRESS */
+  .progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#B88A5A,#2E2A26);width:0%;z-index:9999;transition:width 0.1s}
+  /* LOADER */
+  .loader{position:fixed;inset:0;background:#FFFBF7;z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.6s, visibility 0.6s}
+  .loader.hidden{opacity:0;visibility:hidden}
+  .loader-logo{width:64px;height:64px;background:#2E2A26;color:#FFFBF7;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond';font-weight:700;font-size:28px;animation:loaderPulse 1.5s infinite}
+  .loader-bar{width:120px;height:2px;background:#EDE6DD;border-radius:2px;margin-top:20px;overflow:hidden}
+  .loader-bar i{display:block;height:100%;width:40%;background:#B88A5A;animation:loaderMove 1.2s infinite ease-in-out}
+  @keyframes loaderPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  @keyframes loaderMove{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+  /* ANIMATIONS */
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes float2{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(1deg)}}
+  @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}}
+  @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0;transform:translateY(24px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+  .reveal.active{opacity:1;transform:translateY(0)}
+  /* NAV */
+  nav{position:sticky;top:0;z-index:60;background:rgba(255,251,247,0.88);backdrop-filter:blur(20px) saturate(1.2);border-bottom:1px solid #EDE6DD}
+  .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+  .logo-wrap{display:flex;align-items:center;gap:12px}
+  .logo-mark{width:42px;height:42px;background:#2E2A26;color:#FFFBF7;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond';font-weight:700;font-size:20px;position:relative;overflow:hidden}
+  .logo-mark::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,0.3),transparent);transform:translateX(-100%);animation:shimmer 3s infinite}
+  .logo-text b{display:block;font-family:'Cormorant Garamond';font-size:19px;line-height:1;letter-spacing:0.06em;text-transform:uppercase}
+  .logo-text span{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#B88A5A;font-weight:500}
+  .nav-links{display:flex;gap:30px;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;color:#6B6B6B;align-items:center}
+  .nav-links a{position:relative;padding:4px 0}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:#2E2A26;transition:width 0.3s}
+  .nav-links a:hover::after{width:100%}
+  .nav-links a:hover{color:#2E2A26}
+  .nav-cta{background:#2E2A26;color:#FFFBF7;padding:10px 18px;border-radius:999px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;transition:0.3s;border:1px solid #2E2A26}
+  .nav-cta:hover{background:#B88A5A;border-color:#B88A5A;transform:translateY(-1px)}
+  .hamburger{display:none;width:36px;height:36px;border:1px solid #EDE6DD;border-radius:50%;align-items:center;justify-content:center;cursor:pointer}
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;padding:36px 0 24px;min-height:88vh}
+  .eyebrow{font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#B88A5A;display:flex;align-items:center;gap:10px;margin-bottom:18px;font-weight:600}
+  .eyebrow::before{content:'';width:28px;height:1px;background:#B88A5A}
+  .hero h1{font-size:64px;line-height:0.9;color:#1C1A17;margin-bottom:10px;overflow:hidden}
+  .hero h1 span.line{display:block;overflow:hidden}
+  .hero h1 span.line i{display:block;font-style:normal;transform:translateY(100%);animation:fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards}
+  .hero h1 span.line:nth-child(2) i{animation-delay:0.1s}
+  .hero h1 span.line:nth-child(3) i{animation-delay:0.2s}
+  .hero h1 span.line:nth-child(4) i{animation-delay:0.3s}
+  .hero h1 em{font-weight:400;font-style:italic;color:#B88A5A}
+  .hero h1 .tamil{font-size:16px;display:block;color:#9A8A7A;letter-spacing:0.04em;margin-top:10px;font-style:normal;font-weight:400;font-family:system-ui}
+  .hero .bio{font-size:15.5px;color:#6E6560;max-width:480px;margin:18px 0 22px;font-weight:300;line-height:1.7}
+  .hero .bio b{color:#2E2A26;font-weight:600}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+  .chip{border:1px solid #E8DDD0;background:#fff;padding:6px 12px;border-radius:999px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;opacity:0;transform:translateY(10px);animation:fadeUp 0.6s forwards}
+  .chip:nth-child(1){animation-delay:0.4s}.chip:nth-child(2){animation-delay:0.5s}.chip:nth-child(3){animation-delay:0.6s}.chip:nth-child(4){animation-delay:0.7s}.chip:nth-child(5){animation-delay:0.8s}
+  .chip.gold{background:#2E2A26;color:#FFFBF7;border-color:#2E2A26}
+  .btn-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .btn-primary{background:#2E2A26;color:#FFFBF7;padding:15px 26px;border-radius:999px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;display:inline-flex;gap:8px;align-items:center;transition:all 0.35s cubic-bezier(0.16,1,0.3,1);border:1px solid #2E2A26;position:relative;overflow:hidden;cursor:pointer;font-weight:600}
+  .btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,0.2),transparent);transform:translateX(-100%);transition:transform 0.6s}
+  .btn-primary:hover::before{transform:translateX(100%)}
+  .btn-primary:hover{background:#B88A5A;border-color:#B88A5A;transform:translateY(-2px);box-shadow:0 12px 24px rgba(184,138,90,0.25)}
+  .btn-ghost{border:1px solid #D9CFC2;padding:14px 26px;border-radius:999px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;background:transparent;transition:0.3s;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+  .btn-ghost:hover{border-color:#2E2A26;background:#fff;transform:translateY(-1px)}
+  .hero-visual{position:relative}
+  .hero-img-main{border-radius:28px;overflow:hidden;height:620px;background:#F2E9DC;position:relative;transform:rotate(-0.5deg);transition:transform 0.6s}
+  .hero-img-main:hover{transform:rotate(0deg) scale(1.01)}
+  .hero-img-main img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
+  .hero-img-main:hover img{transform:scale(1.05)}
+  .float-card{position:absolute;background:rgba(255,251,247,0.96);backdrop-filter:blur(12px);border-radius:18px;padding:14px 16px;box-shadow:0 16px 40px rgba(0,0,0,0.12);display:flex;gap:12px;align-items:center;border:1px solid rgba(255,255,255,0.8);animation:float 4s ease-in-out infinite}
+  .float-card.top{top:18px;right:-12px;animation-delay:0.5s}
+  .float-card.bottom{bottom:22px;left:-14px;animation-delay:1s}
+  .float-card .dot{width:38px;height:38px;border-radius:50%;background:#F8EDE1;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  /* STATS */
+  .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #EDE6DD;border-radius:18px;overflow:hidden;margin:28px 0 0;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.03)}
+  .stat-item{padding:18px 16px;text-align:center;border-right:1px solid #EDE6DD;position:relative;overflow:hidden}
+  .stat-item:last-child{border-right:none}
+  .stat-item::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#B88A5A;transform:scaleX(0);transition:transform 0.6s}
+  .stat-item:hover::after{transform:scaleX(1)}
+  .stat-item b{font-family:'Cormorant Garamond';font-size:30px;display:block;line-height:1;color:#1C1A17}
+  .stat-item span{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#8A8A8A;font-weight:500}
+  /* MARQUEE */
+  .marquee{border-top:1px solid #EDE6DD;border-bottom:1px solid #EDE6DD;background:#1C1A17;color:#FFFBF7;padding:12px 0;overflow:hidden;white-space:nowrap}
+  .marquee-track{display:inline-flex;animation:marquee 24s linear infinite;gap:40px}
+  .marquee-track span{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;display:flex;align-items:center;gap:12px}
+  .marquee-track i{width:4px;height:4px;background:#B88A5A;border-radius:50%;display:inline-block}
+  /* SECTIONS */
+  section{padding:84px 0}
+  .section-head{margin-bottom:42px}
+  .section-head .eyebrow{margin-bottom:12px}
+  .section-head h2{font-size:46px;line-height:0.92;color:#1C1A17}
+  .section-head h2 em{font-style:italic;font-weight:400;color:#B88A5A}
+  .section-head p{color:#8A7F78;max-width:560px;margin-top:14px;font-size:14.5px;font-weight:300;line-height:1.6}
+  /* SERVICES */
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .service-card{background:#fff;border:1px solid #EDE6DD;border-radius:22px;padding:26px 22px;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);position:relative;overflow:hidden}
+  .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,#B88A5A,transparent);opacity:0;transition:opacity 0.4s}
+  .service-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.07);border-color:#D9CFC2}
+  .service-card:hover::before{opacity:1}
+  .service-icon{width:52px;height:52px;border-radius:14px;background:#F8EDE1;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;transition:transform 0.4s}
+  .service-card:hover .service-icon{transform:rotate(8deg) scale(1.08)}
+  .service-card h3{font-size:23px;margin-bottom:8px}
+  .service-card p{font-size:13.5px;color:#8A7F78;line-height:1.65;margin-bottom:16px}
+  .service-card ul{list-style:none}
+  .service-card li{font-size:12.5px;color:#6E6560;padding:5px 0;display:flex;gap:8px;align-items:center}
+  .service-card li::before{content:'✦';color:#B88A5A;font-size:8px}
+  .service-link{margin-top:16px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;display:inline-flex;gap:6px;align-items:center;color:#2E2A26}
+  .service-link::after{content:'→';transition:transform 0.3s}
+  .service-card:hover .service-link::after{transform:translateX(4px)}
+  /* WORK */
+  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .work-card{border-radius:22px;overflow:hidden;background:#fff;border:1px solid #EDE6DD;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);cursor:pointer}
+  .work-card:hover{transform:translateY(-5px);box-shadow:0 22px 44px rgba(0,0,0,0.08)}
+  .work-img{height:400px;background:#F3ECE4;position:relative;overflow:hidden}
+  .work-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+  .work-card:hover .work-img img{transform:scale(1.08)}
+  .work-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.25),transparent);opacity:0;transition:opacity 0.4s}
+  .work-card:hover .work-img::after{opacity:1}
+  .work-tag{position:absolute;top:14px;left:14px;background:rgba(255,251,247,0.92);backdrop-filter:blur(6px);padding:6px 12px;border-radius:999px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;z-index:2;border:1px solid rgba(255,255,255,0.6)}
+  .work-info{padding:18px 18px 18px}
+  .work-info h3{font-size:20px;margin-bottom:4px}
+  .work-info p{font-size:12.5px;color:#8A7F78;margin-bottom:14px;line-height:1.5;min-height:36px}
+  .work-cta{width:100%;background:#2E2A26;color:#fff;border:none;padding:11px;border-radius:999px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;display:flex;justify-content:center;align-items:center;gap:6px;transition:all 0.3s;font-weight:600;position:relative;overflow:hidden}
+  .work-cta::before{content:'';position:absolute;inset:0;background:#B88A5A;transform:translateY(100%);transition:transform 0.3s}
+  .work-cta:hover::before{transform:translateY(0)}
+  .work-cta span{position:relative;z-index:1}
+  .work-cta:hover{transform:translateY(-1px)}
+  /* PROCESS */
+  .process{background:#1C1A17;color:#FFFBF7;border-radius:28px;padding:52px 40px;display:grid;grid-template-columns:1fr 1.3fr;gap:36px;align-items:center;position:relative;overflow:hidden}
+  .process::before{content:'';position:absolute;top:-50%;right:-20%;width:60%;height:200%;background:radial-gradient(circle,rgba(184,138,90,0.15),transparent 70%);pointer-events:none}
+  .process h2{font-size:40px;color:#FFFBF7;margin-bottom:12px;line-height:0.95}
+  .process h2 em{color:#B88A5A;font-style:italic;font-weight:400}
+  .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px;position:relative;z-index:1}
+  .step{border:1px solid rgba(255,251,247,0.1);border-radius:16px;padding:18px 16px;background:rgba(255,251,247,0.03);backdrop-filter:blur(4px);transition:all 0.3s}
+  .step:hover{background:rgba(255,251,247,0.06);border-color:rgba(184,138,90,0.3);transform:translateY(-2px)}
+  .step b{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#B88A5A;display:block;margin-bottom:10px}
+  .step h4{font-family:'Inter';font-size:13px;font-weight:600;margin-bottom:6px;color:#FFFBF7}
+  .step p{font-size:11.5px;color:#B8AEA3;line-height:1.5}
+  /* BANNER */
+  .insta-banner{background:linear-gradient(135deg,#F8EDE1,#F3ECE4);border:1px dashed #D9CFC2;border-radius:20px;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:32px;position:relative;overflow:hidden}
+  .insta-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent);transform:translateX(-100%);animation:shimmer 4s infinite}
+  /* FOOTER */
+  footer{border-top:1px solid #EDE6DD;padding:56px 0 28px;margin-top:20px;background:#FFFBF7}
+  .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:36px}
+  .footer-grid h4{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:16px;color:#2E2A26;font-weight:700}
+  .footer-grid a,.footer-grid p{font-size:13.5px;color:#7A726C;margin-bottom:9px;display:block;line-height:1.6;transition:color 0.2s}
+  .footer-grid a:hover{color:#2E2A26}
+  .copyright{margin-top:44px;padding-top:20px;border-top:1px solid #EDE6DD;display:flex;justify-content:space-between;font-size:11px;color:#9A9A9A;flex-wrap:wrap;gap:12px}
+  /* FLOAT WA */
+  .float-wa{position:fixed;bottom:22px;right:22px;background:#25D366;color:white;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,0.35);z-index:100;transition:transform 0.3s;animation:pulse 2.5s infinite}
+  .float-wa:hover{transform:scale(1.08)}
+  /* MOBILE MENU */
+  .mobile-menu{position:fixed;inset:0;background:#FFFBF7;z-index:70;transform:translateX(100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);padding:24px;display:flex;flex-direction:column}
+  .mobile-menu.open{transform:translateX(0)}
+  .mobile-menu a{font-family:'Cormorant Garamond';font-size:32px;padding:12px 0;border-bottom:1px solid #EDE6DD}
+  /* TOAST */
+  .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:#2E2A26;color:#FFFBF7;padding:12px 20px;border-radius:999px;font-size:12px;letter-spacing:0.05em;opacity:0;transition:all 0.4s;z-index:200;pointer-events:none}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  /* RESPONSIVE */
+  @media(max-width:960px){
+    .hero{grid-template-columns:1fr;gap:28px}
+    .hero h1{font-size:48px}
+    .hero-img-main{height:500px;transform:none}
+    .service-grid,.work-grid{grid-template-columns:1fr 1fr}
+    .process{grid-template-columns:1fr;padding:32px 24px}
+    .process-steps{grid-template-columns:1fr 1fr}
+    .stats-bar{grid-template-columns:repeat(4,1fr)}
+    .footer-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .hamburger{display:flex}
+  }
+  @media(max-width:640px){
+    .hero h1{font-size:38px}
+    .service-grid,.work-grid{grid-template-columns:1fr}
+    .stats-bar{grid-template-columns:1fr 1fr}
+    .float-card{display:none}
+    .process-steps{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr}
+    .container{padding:0 18px}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="loader" id="loader">
+  <div class="loader-logo">R</div>
+  <div style="margin-top:14px;font-family:'Cormorant Garamond';font-size:18px;letter-spacing:0.08em">Raksshaas Fashion</div>
+  <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#B88A5A;margin-top:4px">From threads to tradition ✨</div>
+  <div class="loader-bar"><i></i></div>
+</div>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="logo-wrap">
+      <div class="logo-mark">R</div>
+      <div class="logo-text"><b>Raksshaas Fashion</b><span>By Raksshana ❤️ — Salem & CBE</span></div>
+    </div>
+    <div class="nav-links">
+      <a href="#services">Aari Work</a>
+      <a href="#work">Portfolio</a>
+      <a href="#process">How It Works</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="https://www.instagram.com/raksshaas_fashion/" target="_blank">↗ 448 Posts</a>
+    </div>
+    <div class="hamburger" id="hamburger">☰</div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px"><div class="logo-wrap"><div class="logo-mark">R</div><div class="logo-text"><b>Raksshaas</b><span>By Raksshana</span></div></div><div id="closeMenu" style="width:36px;height:36px;border:1px solid #EDE6DD;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer">✕</div></div>
+  <a href="#services" onclick="closeMobile()">Aari Work</a>
+  <a href="#work" onclick="closeMobile()">Portfolio</a>
+  <a href="#process" onclick="closeMobile()">How It Works</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="https://www.instagram.com/raksshaas_fashion/" target="_blank" style="margin-top:20px;background:#2E2A26;color:#FFFBF7;border-radius:999px;padding:16px;text-align:center;font-size:14px;font-family:Inter">Follow on Instagram ↗</a>
+</div>
+
+<div class="container">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">📍 Seeragapadi, Salem • Serving Salem & Coimbatore</div>
+      <h1>
+        <span class="line"><i>Designs made</i></span>
+        <span class="line"><i>with love <em>💖</em></i></span>
+        <span class="line"><i>From threads</i></span>
+        <span class="line"><i>to <em>tradition ✨</em></i></span>
+        <span class="tamil" style="opacity:0;animation:fadeUp 0.8s 0.9s forwards">நூலில் இருந்து பாரம்பரியம் வரை</span>
+      </h1>
+      <p class="bio"><b>Raksshana</b> — Aari | Embroidery | Custom Stitching. We turn your Pinterest dreams into perfectly stitched reality. Bridal blouses, designer blouses, kids' fairytale gowns — <b>DM to create your perfect outfit.</b></p>
+      <div class="chips">
+        <div class="chip gold">✨ 448 Designs</div>
+        <div class="chip">🪡 Aari Specialist</div>
+        <div class="chip">👗 Custom Stitching</div>
+        <div class="chip">👧 Kids Couture</div>
+        <div class="chip">📦 Online Orders</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary magnetic" onclick="order('Custom Outfit - From website hero')"><span>DM to Create Your Outfit →</span></button>
+        <button class="btn-ghost" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})"><span>✦ See Aari Work</span></button>
+      </div>
+      <div class="stats-bar reveal">
+        <div class="stat-item"><b data-count="448">0</b><span>Posts</span></div>
+        <div class="stat-item"><b>Aari</b><span>Specialist</span></div>
+        <div class="stat-item"><b>2</b><span>Cities</span></div>
+        <div class="stat-item"><b>100%</b><span>Custom</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-main"><img src="images/aari-blouse-1.jpg" alt="Aari Work Blouse by Raksshana" onerror="this.src='images/product-1.jpg'"></div>
+      <div class="float-card top"><div class="dot">🪡</div><div style="font-size:12px;line-height:1.3"><b>Aari Work Blouses</b><br><span style="color:#8A7F78">Bridal & custom embroidery</span></div></div>
+      <div class="float-card bottom"><div class="dot">💖</div><div style="font-size:12px;line-height:1.3"><b>DM for Orders</b><br><span style="color:#8A7F78">Online customization</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="marquee"><div class="marquee-track">
+  <span>Aari Work <i></i> Embroidery <i></i> Custom Stitching <i></i> Kids Couture <i></i> Bridal Blouses <i></i> Designer Blouses <i></i> From Threads To Tradition <i></i></span>
+  <span>Aari Work <i></i> Embroidery <i></i> Custom Stitching <i></i> Kids Couture <i></i> Bridal Blouses <i></i> Designer Blouses <i></i> From Threads To Tradition <i></i></span>
+</div></div>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal"><div class="eyebrow">What we do</div><h2>Threads to <em>Tradition</em></h2><p>Not fast fashion — slow, handmade, made-with-love. Every stitch is Aari work done by hand, tailored to your measurements and occasion.</p></div>
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🪡</div>
+        <h3>Aari Work</h3>
+        <p>Our signature. Bridal blouses, intricate zari, stone & thread work — the main showcase of @raksshaas_fashion.</p>
+        <ul><li>Bridal Aari blouses</li><li>Designer blouse embroidery</li><li>Zari, stone, French knot</li></ul>
+        <div class="service-link">Explore Aari Work</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.1s">
+        <div class="service-icon">✨</div>
+        <h3>Embroidery & Blouse Stitching</h3>
+        <p>From simple lining to heavy designer blouses. Perfect finishing, perfect fit — Salem & Coimbatore clients love it.</p>
+        <ul><li>Custom blouse stitching</li><li>Designer blouse patterns</li><li>Perfect fitting guarantee</li></ul>
+        <div class="service-link">See Stitching</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.2s">
+        <div class="service-icon">👧</div>
+        <h3>Custom & Kids Couture</h3>
+        <p>“A little fairytale magic, stitched to perfection.” Birthday gowns, photoshoot outfits, dreamy layers.</p>
+        <ul><li>Princess / fairytale gowns</li><li>Kids birthday couture</li><li>Family combo outfits</li></ul>
+        <div class="service-link">View Kids Collection</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal"><div class="eyebrow">Recent work from Instagram • 448 posts</div><h2>Stitched with <em>Love</em></h2><p>Real client work inspired by @raksshaas_fashion. Replace these demo photos with her actual Aari work in 1 click — just swap images/ folder.</p></div>
+    <div class="work-grid" id="workGrid">
+      <!-- Products loaded dynamically from API - fallback shows loading -->
+      <div class="work-card reveal"><div class="work-img" style="display:flex;align-items:center;justify-content:center;background:#F8EDE1"><span style="font-size:13px;color:#8A7F78">Loading designs...</span></div></div>
+      <div class="work-card reveal" style="transition-delay:0.1s"><div class="work-img" style="display:flex;align-items:center;justify-content:center;background:#F3ECE4"><span style="font-size:13px;color:#8A7F78">✨</span></div></div>
+      <div class="work-card reveal" style="transition-delay:0.2s"><div class="work-img" style="display:flex;align-items:center;justify-content:center;background:#EDE3D7"><span style="font-size:13px;color:#8A7F78">🪡</span></div></div>
+    </div>
+    <div class="insta-banner reveal">
+      <div style="position:relative;z-index:1"><div style="font-size:15px;font-weight:600;color:#2E2A26">Want to see all 448 posts? ✨</div><div style="font-size:12.5px;color:#6E6560;margin-top:2px">She posts daily on Instagram first. Real Aari work videos, client trials, behind-the-scenes.</div></div>
+      <a href="https://www.instagram.com/raksshaas_fashion/" target="_blank" class="btn-primary" style="padding:11px 20px;position:relative;z-index:1"><span>Open Instagram ↗</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="process reveal" id="process">
+    <div>
+      <div class="eyebrow" style="color:#B88A5A">How it works</div>
+      <h2>DM to<br><em>Your Perfect Outfit</em></h2>
+      <p style="color:#B8AEA3;font-size:13.5px;margin-top:12px;line-height:1.6">No cart, no confusion. Just like her Instagram — you DM, she designs. Now with a proper website to build trust for new clients from Salem & Coimbatore.</p>
+      <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap">
+        <button class="btn-primary" style="background:#FFFBF7;color:#1C1A17" onclick="order('I want to create my perfect outfit')"><span>Start on WhatsApp</span></button>
+        <button class="btn-ghost" style="border-color:rgba(255,251,247,0.2);color:#FFFBF7" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">📍 Visit Studio</button>
+      </div>
+    </div>
+    <div class="process-steps">
+      <div class="step"><b>01</b><h4>DM Your Idea</h4><p>Send reference photo on Insta / WhatsApp</p></div>
+      <div class="step"><b>02</b><h4>Design & Quote</h4><p>We suggest fabric, Aari design & price</p></div>
+      <div class="step"><b>03</b><h4>Stitch with Love 💖</h4><p>Handmade Aari & custom stitching</p></div>
+      <div class="step"><b>04</b><h4>Deliver</h4><p>Salem & Coimbatore pickup / courier</p></div>
+    </div>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo-wrap" style="margin-bottom:14px"><div class="logo-mark">R</div><div class="logo-text"><b>Raksshaas Fashion</b><span>By Raksshana ❤️</span></div></div>
+        <p>Designs made with love 💖<br>From threads to tradition ✨<br><b>Aari | Embroidery | Custom Stitching</b></p>
+        <p style="margin-top:14px">📍 Seeragapadi, Salem<br>📍 Serving Salem & Coimbatore<br>Online orders + customization available</p>
+        <div style="margin-top:16px;display:flex;gap:10px">
+          <a href="https://www.instagram.com/raksshaas_fashion/" target="_blank" style="width:38px;height:38px;border-radius:50%;background:#2E2A26;color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">IG</a>
+          <a href="https://wa.me/919025375687" target="_blank" style="width:38px;height:38px;border-radius:50%;background:#25D366;color:white;display:flex;align-items:center;justify-content:center">WA</a>
+        </div>
+      </div>
+      <div><h4>Services</h4><a onclick="order('Aari Work')">Aari Work Blouses</a><a onclick="order('Designer Blouse Stitching')">Designer Blouse Stitching</a><a onclick="order('Embroidery Work')">Embroidery Work</a><a onclick="order('Kids Couture')">Kids Couture Gowns</a><a onclick="order('Custom Stitching')">Custom Stitching</a></div>
+      <div><h4>Quick Links</h4><a href="#services">Our Services</a><a href="#work">Portfolio (448 posts)</a><a href="https://www.instagram.com/raksshaas_fashion/" target="_blank">Instagram ↗</a><a onclick="order('General enquiry')">WhatsApp Enquiry</a></div>
+      <div><h4>Contact</h4><p>Instagram: @raksshaas_fashion<br>359 followers • 175 following • 448 posts</p><a href="https://wa.me/919025375687" style="color:#25D366;font-weight:700">WhatsApp: +91 90253 75687</a><p style="margin-top:8px">DM to create your perfect outfit 💌<br>Open: 10am - 8pm IST</p></div>
+    </div>
+    <div class="copyright">
+      <span>© 2026 Raksshaas Fashion by Raksshana — Salem & Coimbatore. Designs made with love 💖</span>
+      <span style="display:flex;gap:12px;align-items:center">Built with 🪡 by Vivyn • <a href="/admin" style="color:#B88A5A;font-weight:600;text-decoration:underline">Shop Owner Login →</a></span>
+    </div>
+    <div style="text-align:center;margin-top:16px;padding:12px;background:#F8EDE1;border-radius:12px;border:1px dashed #D9CFC2">
+      <p style="font-size:12px;color:#6E6560"><b>For Raksshana (Shopkeeper):</b> To add new designs, go to <code style="background:#fff;padding:2px 6px;border-radius:4px;border:1px solid #EDE6DD">/admin</code> — Login: <b>raksshana / raksshaas123</b> • <a href="/admin" style="color:#2E2A26;font-weight:700;text-decoration:underline">Click here to open Admin Panel →</a></p>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" id="floatWA" href="https://wa.me/919025375687?text=Hi%20Raksshana%20%E2%9D%A4%EF%B8%8F%20I%20saw%20Raksshaas%20Fashion%20website%20-%20From%20threads%20to%20tradition%20%E2%9C%A8%20I%20want%20to%20create%20my%20perfect%20outfit" target="_blank" aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12.04 2c-5.46 0-9.91 4.44-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.44 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm0 18.06c-1.47 0-2.91-.39-4.17-1.13l-.3-.18-3.12.82.83-3.04-.2-.31A8.06 8.06 0 013.95 11.9a8.09 8.09 0 018.09-8.09c2.16 0 4.19.84 5.72 2.37a8.03 8.03 0 012.37 5.72c0 4.46-3.63 8.08-8.09 8.08zm4.45-6.06c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.19-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.46-.4-.4-.54-.41l-.46-.01c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.57.18 1.09.16 1.5.1.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
+</a>
+
+<div class="toast" id="toast">Opening WhatsApp... 💖</div>
+
+<script>
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 800);
+});
+// Progress bar
+window.addEventListener('scroll', () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById('progress').style.width = (winScroll / height * 100) + '%';
+});
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active') });
+}, {threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// Counter
+let counted=false;
+const statObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting && !counted){
+      counted=true;
+      document.querySelectorAll('[data-count]').forEach(el=>{
+        const target=parseInt(el.dataset.count); let cur=0;
+        const inc=target/40;
+        const timer=setInterval(()=>{cur+=inc; if(cur>=target){cur=target; clearInterval(timer);} el.textContent=Math.floor(cur);},30);
+      });
+    }
+  });
+},{threshold:0.5});
+const statsBar=document.querySelector('.stats-bar'); if(statsBar) statObserver.observe(statsBar);
+// Magnetic buttons
+document.querySelectorAll('.magnetic').forEach(btn=>{
+  btn.addEventListener('mousemove', (e)=>{
+    const rect=btn.getBoundingClientRect(); const x=e.clientX-rect.left-rect.width/2; const y=e.clientY-rect.top-rect.height/2;
+    btn.style.transform=`translate(${x*0.15}px, ${y*0.2}px)`;
+  });
+  btn.addEventListener('mouseleave', ()=>{btn.style.transform='translate(0,0)';});
+});
+// Mobile menu
+const hamburger=document.getElementById('hamburger'); const mobileMenu=document.getElementById('mobileMenu'); const closeMenuBtn=document.getElementById('closeMenu');
+function openMobile(){mobileMenu.classList.add('open'); document.body.style.overflow='hidden';}
+function closeMobile(){mobileMenu.classList.remove('open'); document.body.style.overflow='';}
+if(hamburger) hamburger.addEventListener('click', openMobile);
+if(closeMenuBtn) closeMenuBtn.addEventListener('click', closeMobile);
+// Order function with toast + proper encoding
+function order(item){
+  const toast=document.getElementById('toast'); toast.textContent=`Opening WhatsApp for ${item}... 💖`; toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),2500);
+  const phone="919025375687";
+  const rawMsg=`Hi Raksshana ❤️! I saw your website Raksshaas Fashion - From threads to tradition ✨\n\nI'm interested in: *${item}*\nCan you share designs, price & timing?\n📍 Location: Salem / Coimbatore`;
+  const url=`https://wa.me/${phone}?text=${encodeURIComponent(rawMsg)}`;
+  setTimeout(()=>window.open(url,'_blank'),400);
+}
+// Dynamic Products from API (Admin uploads) + offline fallback
+async function loadProducts(){
+  const grid = document.getElementById('workGrid');
+  let products=[];
+  try{
+    const res = await fetch('/api/products');
+    if(res.ok){
+      products = await res.json();
+    } else {
+      throw new Error('API not ok');
+    }
+  }catch(e){
+    console.log('API offline, checking localStorage', e.message);
+    // Check localStorage from admin offline mode
+    try{
+      const offline = JSON.parse(localStorage.getItem('customer_products')||'[]');
+      const offlineAdmin = JSON.parse(localStorage.getItem('offline_products')||'[]');
+      products = offline.length ? offline : offlineAdmin;
+    }catch{}
+    if(products.length===0){
+      products = [
+        {title:'Bridal Aari Blouse', price:'Custom Price', description:'Gold zari + stone work — custom for muhurtham. Handmade with love in Salem.', tag:'🔥 Bridal Aari', image:'images/aari-blouse-1.jpg'},
+        {title:'Fairytale Birthday Gown', price:'From ₹2,500', description:'"Delicate embroidery, dreamy layers" — for little moments that deserve magic.', tag:'✨ Kids Special', image:'images/kids-gown.jpg'},
+        {title:'Designer Blouse Stitching', price:'From ₹850', description:'From threads to tradition — your design, our stitching, perfect fit.', tag:'🪡 Custom', image:'images/product-3.jpg'}
+      ];
+    }
+  }
+  if(!grid) return;
+  if(products.length===0){
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;background:#fff;border:1px dashed #D9CFC2;border-radius:20px"><p style="color:#8A7F78">No designs yet — Admin will upload soon ✨</p><a href="/admin" style="display:inline-block;margin-top:12px;background:#2E2A26;color:#fff;padding:10px 18px;border-radius:999px;font-size:12px">Go to Admin Panel</a></div>`;
+    return;
+  }
+  grid.innerHTML = products.map((p,i)=>`
+    <div class="work-card reveal active" style="transition-delay:${(i*0.08)}s">
+      <div class="work-img"><span class="work-tag">${(p.tag||'✨ New')}</span><img src="${p.image}" alt="${p.title}" onerror="this.src='images/product-1.jpg'" loading="lazy"></div>
+      <div class="work-info"><h3>${p.title}</h3><p style="color:#B88A5A;font-weight:600;font-size:12px;margin-bottom:4px">${p.price||'DM for Price'}</p><p>${p.description||''}</p><button class="work-cta" onclick="order('${(p.title||'').replace(/'/g,"\\'")}')"><span>Enquire on WhatsApp →</span></button></div>
+    </div>
+  `).join('');
+  grid.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+}
+loadProducts();
+
+// Parallax hero
+window.addEventListener('scroll', ()=>{
+  const scrolled=window.scrollY; const heroImg=document.querySelector('.hero-img-main img');
+  if(heroImg && scrolled<800){heroImg.style.transform=`translateY(${scrolled*0.12}px) scale(${1+scrolled*0.0002})`;}
+});
+</script>
+</body>
+</html>
