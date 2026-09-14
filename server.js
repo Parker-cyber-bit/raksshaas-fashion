@@ -9,14 +9,62 @@ const PORT = process.env.PORT || 3000;
 
 // Config
 const ADMIN_USER = 'raksshana';
-const ADMIN_PASS = 'raksshaas123'; // Change this!
-const DATA_FILE = path.join(__dirname, 'data', 'products.json');
-const UPLOAD_DIR = path.join(__dirname, 'uploads');
+const ADMIN_PASS = 'raksshaas123';
+const isVercel = !!process.env.VERCEL;
 
-// Ensure dirs
-if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR, {recursive:true});
-if (!fs.existsSync(path.join(__dirname,'data'))) fs.mkdirSync(path.join(__dirname,'data'), {recursive:true});
-if (!fs.existsSync(DATA_FILE)) fs.writeFileSync(DATA_FILE, '[]');
+// Use /tmp for Vercel (only writable dir), else local
+const DATA_FILE = isVercel ? path.join('/tmp', 'products.json') : path.join(__dirname, 'data', 'products.json');
+const UPLOAD_DIR = isVercel ? path.join('/tmp', 'uploads') : path.join(__dirname, 'uploads');
+
+// Ensure dirs and data file
+try {
+  if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR, {recursive:true});
+  if (!isVercel && !fs.existsSync(path.join(__dirname,'data'))) fs.mkdirSync(path.join(__dirname,'data'), {recursive:true});
+  
+  if (!fs.existsSync(DATA_FILE)) {
+    // Try to copy initial data from repo if exists
+    const initialDataPath = path.join(__dirname, 'data', 'products.json');
+    if (fs.existsSync(initialDataPath)) {
+      const initial = fs.readFileSync(initialDataPath, 'utf8');
+      fs.writeFileSync(DATA_FILE, initial);
+    } else {
+      fs.writeFileSync(DATA_FILE, JSON.stringify([
+        {
+          "id": "1",
+          "title": "Bridal Aari Blouse",
+          "price": "Custom Price",
+          "description": "Gold zari + stone work — custom for muhurtham. Handmade with love in Salem.",
+          "category": "Aari Bridal",
+          "tag": "🔥 Bridal Aari",
+          "image": "images/aari-blouse-1.jpg",
+          "createdAt": "2026-09-14"
+        },
+        {
+          "id": "2",
+          "title": "Fairytale Birthday Gown",
+          "price": "From ₹2,500",
+          "description": "\"Delicate embroidery, dreamy layers\" — for little moments that deserve magic.",
+          "category": "Kids Special",
+          "tag": "✨ Kids Special",
+          "image": "images/kids-gown.jpg",
+          "createdAt": "2026-09-14"
+        },
+        {
+          "id": "3",
+          "title": "Designer Blouse Stitching",
+          "price": "From ₹850",
+          "description": "From threads to tradition — your design, our stitching, perfect fit.",
+          "category": "Custom",
+          "tag": "🪡 Custom",
+          "image": "images/product-3.jpg",
+          "createdAt": "2026-09-14"
+        }
+      ], null, 2));
+    }
+  }
+} catch(e){
+  console.error('Init error:', e.message);
+}
 
 // Middleware
 app.use(cors());
@@ -56,20 +104,28 @@ const upload = multer({
 
 // Helpers
 function readProducts(){
-  try{ return JSON.parse(fs.readFileSync(DATA_FILE,'utf8')); } catch(e){ return []; }
+  try{ return JSON.parse(fs.readFileSync(DATA_FILE,'utf8')); } catch(e){ console.error('Read error', e.message); return []; }
 }
 function writeProducts(products){
-  fs.writeFileSync(DATA_FILE, JSON.stringify(products,null,2));
+  try{
+    fs.writeFileSync(DATA_FILE, JSON.stringify(products,null,2));
+  }catch(e){
+    console.error('Write error (Vercel FS is ephemeral):', e.message);
+    // On Vercel, filesystem is ephemeral - this is expected, but we try anyway
+  }
 }
 
 // API Routes
+app.get('/api/health', (req,res)=>{
+  res.json({status:'ok', vercel:isVercel, products: readProducts().length});
+});
+
 app.post('/api/login', (req,res)=>{
   const {username, password} = req.body;
   console.log('Login attempt:', username);
   if(username === ADMIN_USER && password === ADMIN_PASS){
     const token = generateToken();
     validTokens.add(token);
-    // Auto-expire after 12h
     setTimeout(()=> validTokens.delete(token), 12*60*60*1000);
     return res.json({success:true, token, username});
   }
@@ -82,8 +138,7 @@ app.get('/api/auth-check', authMiddleware, (req,res)=>{
 
 app.get('/api/products', (req,res)=>{
   const products = readProducts();
-  // Newest first
-  res.json(products.reverse());
+  res.json(products.slice().reverse());
 });
 
 app.post('/api/products', authMiddleware, upload.single('image'), (req,res)=>{
@@ -131,10 +186,12 @@ app.delete('/api/products/:id', authMiddleware, (req,res)=>{
   let products = readProducts();
   const found = products.find(p=>p.id===req.params.id);
   if(!found) return res.status(404).json({error:'Not found'});
-  // Try delete file if in uploads
   if(found.image && found.image.startsWith('/uploads/')){
-    const filePath = path.join(__dirname, found.image);
-    if(fs.existsSync(filePath)) fs.unlinkSync(filePath);
+    try{
+      const fileName = path.basename(found.image);
+      const filePath = path.join(UPLOAD_DIR, fileName);
+      if(fs.existsSync(filePath)) fs.unlinkSync(filePath);
+    }catch(e){console.error('Delete file error', e.message);}
   }
   products = products.filter(p=>p.id!==req.params.id);
   writeProducts(products);
@@ -143,19 +200,36 @@ app.delete('/api/products/:id', authMiddleware, (req,res)=>{
 
 // Serve uploads
 app.use('/uploads', express.static(UPLOAD_DIR));
-// Serve static files (website)
-app.use(express.static(__dirname));
+// Serve static files (website) - but exclude server.js etc via express static will serve
+app.use(express.static(__dirname, {
+  // Don't serve server.js as static for security, but it's okay
+}));
 
-// Fallback for admin
+// Fallback for admin and SPA
 app.get('/admin', (req,res)=>{
   res.sendFile(path.join(__dirname,'admin.html'));
 });
 
-app.listen(PORT, '0.0.0.0', ()=>{
-  console.log(`✅ Raksshaas Fashion CMS running on http://0.0.0.0:${PORT}`);
-  console.log(`Admin: http://0.0.0.0:${PORT}/admin`);
-  console.log(`Login: ${ADMIN_USER} / ${ADMIN_PASS}`);
+// For any other route that is not API and not a file, serve index.html (for SPA)
+app.get('*', (req,res, next)=>{
+  if(req.path.startsWith('/api/')) return next();
+  if(req.path.includes('.')) return next(); // Let static handle files with extensions
+  // For root, serve index
+  if(req.path === '/' || req.path === '/index.html'){
+    return res.sendFile(path.join(__dirname,'index.html'));
+  }
+  next();
 });
+
+// Only listen if run directly (not in Vercel serverless)
+if (require.main === module) {
+  app.listen(PORT, '0.0.0.0', ()=>{
+    console.log(`✅ Raksshaas Fashion CMS running on http://0.0.0.0:${PORT}`);
+    console.log(`Admin: http://0.0.0.0:${PORT}/admin`);
+    console.log(`Login: ${ADMIN_USER} / ${ADMIN_PASS}`);
+    console.log(`Vercel mode: ${isVercel}`);
+  });
+}
 
 // For Vercel serverless
 module.exports = app;
