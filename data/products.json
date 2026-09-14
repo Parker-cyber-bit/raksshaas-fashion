@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "title": "Bridal Aari Blouse",
+    "price": "Custom Price",
+    "description": "Gold zari + stone work — custom for muhurtham. Handmade with love in Salem.",
+    "category": "Aari Bridal",
+    "tag": "🔥 Bridal Aari",
+    "image": "images/aari-blouse-1.jpg",
+    "createdAt": "2026-09-14"
+  },
+  {
+    "id": "2",
+    "title": "Fairytale Birthday Gown",
+    "price": "From ₹2,500",
+    "description": "\"Delicate embroidery, dreamy layers\" — for little moments that deserve magic.",
+    "category": "Kids Special",
+    "tag": "✨ Kids Special",
+    "image": "images/kids-gown.jpg",
+    "createdAt": "2026-09-14"
+  },
+  {
+    "id": "3",
+    "title": "Designer Blouse Stitching",
+    "price": "From ₹850",
+    "description": "From threads to tradition — your design, our stitching, perfect fit.",
+    "category": "Custom",
+    "tag": "🪡 Custom",
+    "image": "images/product-3.jpg",
+    "createdAt": "2026-09-14"
+  }
+]
